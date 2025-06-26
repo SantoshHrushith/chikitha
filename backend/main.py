@@ -21,7 +21,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all for development
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -36,17 +36,18 @@ prompt = PromptTemplate(
     template="""
 Use the pieces of information provided in the context to answer user's question.
 If you dont know the answer, just say that you dont know, dont try to make up an answer. 
-Dont provide anything out of the given context.If context given is small and relevant ask to elaborate. If any offensive or vulgar language is used ask apology.
+Dont provide anything out of the given context.If context given is small and relevant ask to elaborate.
 
 Context: {context}
 Question: {question}
 
-Start the answer directly. No small talk please.
+# Start the answer directly.
 
 Answer:
 """,
     input_variables=["context", "question"]
 )
+# Start the answer directly. No small talk please.
 
 # === Load FAISS and embeddings ===
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
