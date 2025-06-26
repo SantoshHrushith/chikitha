@@ -1,19 +1,16 @@
 body {
-  background: linear-gradient(135deg, #0f2027, #2c5364, #1c92d2 100%);
+  overflow-y: hidden;
+  background: rgba(20, 30, 60);
   height: 100vh;
   font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
-  margin: 0;
 }
 
 .chat-container {
-  max-width: 900px;
-  margin: auto auto;
+  max-width: 70%;
+  height: 95vh;
+  margin: auto;
   background: rgba(20, 30, 60, 0.85);
   border-radius: 24px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  padding: 32px 24px 24px 24px;
-  backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(255,255,255,0.18);
 }
 
 .title {
@@ -22,18 +19,12 @@ body {
   font-size: 2.2rem;
   letter-spacing: 2px;
   margin-bottom: 24px;
-  text-shadow: 0 0 12px #00fff7, 0 0 2px #fff;
 }
 
 .chat-window {
-  background: rgba(255,255,255,0.06);
-  border-radius: 16px;
   padding: 18px 8px;
-  height: 340px;
+  height: 65vh;
   overflow-y: auto;
-  margin-bottom: 18px;
-  box-shadow: 0 2px 12px 0 rgba(0,255,247,0.08);
-  border: 1px solid rgba(0,255,247,0.08);
   scrollbar-width: thin;
   scrollbar-color: #00fff7 #1c2331;
 }
@@ -66,7 +57,7 @@ body {
   line-height: 1.5;
   background: linear-gradient(135deg, #00fff7 0%, #1c92d2 100%);
   color: #222;
-  box-shadow: 0 2px 8px 0 rgba(0,255,247,0.15);
+  box-shadow: 0 2px 8px 0 rgba(0, 255, 247, 0.15);
   word-break: break-word;
   position: relative;
   animation: popIn 0.3s;
@@ -85,32 +76,43 @@ body {
 }
 
 @keyframes popIn {
-  0% { transform: scale(0.95); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .input-container {
   display: flex;
-  gap: 12px;
-  margin-top: 8px;
+  padding: 10px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgb(32, 87, 136);
+  border-radius: 24px;
 }
 
 .input-box {
   flex: 1;
   padding: 14px 16px;
-  border-radius: 12px;
   border: none;
   font-size: 1.1rem;
-  background: rgba(255,255,255,0.15);
+  background: rgb(32, 87, 136);
   color: #fff;
   outline: none;
-  box-shadow: 0 2px 8px 0 rgba(0,255,247,0.08);
   transition: background 0.2s;
 }
 
-.input-box:focus {
-  background: rgba(0,255,247,0.12);
+.input-box::placeholder {
+  color: #7eeeff;
+  opacity: 1;
+  font-style: italic;
 }
+
+
 
 .send-button {
   padding: 0 24px;
@@ -121,7 +123,7 @@ body {
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 8px 0 rgba(0,255,247,0.18);
+  box-shadow: 0 2px 8px 0 rgba(0, 255, 247, 0.18);
   transition: background 0.2s, color 0.2s;
 }
 
@@ -143,6 +145,66 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .chat-container {
+    max-width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    padding: 0 0 8px 0;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    padding: 8px 0;
+  }
+
+  .chat-window {
+    padding: 8px 2px;
+    height: 60vh;
+    min-height: 220px;
+    max-height: 60vh;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .message-bubble {
+    font-size: 0.98rem;
+    padding: 10px 12px;
+    max-width: 85vw;
+  }
+
+  .input-container {
+    padding: 6px 6px;
+    border-radius: 12px;
+    gap: 6px;
+  }
+
+  .input-box {
+    font-size: 1rem;
+    padding: 10px 10px;
+    border-radius: 8px;
+    min-height: 38px;
+    max-height: 80px;
+  }
+
+  .send-button {
+    padding: 0 12px;
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+  }
 }

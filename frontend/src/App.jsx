@@ -32,8 +32,8 @@ function App() {
         { sender: "Chikitsa", text: "Error: Could not connect." }
       ]);
     }
-   setLoading(false);
-    
+    setLoading(false);
+
   };
 
   const handleKeyPress = (e) => {
@@ -71,6 +71,8 @@ function App() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyPress}
           className="input-box"
+          rows={2}
+
           disabled={loading}
         />
         <button onClick={sendMessage} className="send-button" disabled={loading}>Send</button>
